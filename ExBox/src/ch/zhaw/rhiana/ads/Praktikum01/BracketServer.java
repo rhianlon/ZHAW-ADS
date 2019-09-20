@@ -5,18 +5,18 @@ import ch.zhaw.rhiana.ads.CommandExecutor;
 public class BracketServer implements CommandExecutor {
 
 	private StackLinkedList bracketListStack = new StackLinkedList();
-	private String bracketsWithoutChar = "";
+	
 
 	public String execute(String command) {
 		if (checkBrackets(command) == true) {
-			return "Brackets are set correctly \n Here are your brackets wihout text:" + bracketsWithoutChar + "\n";
+			return "Brackets are set correctly \n";
 		} else {
-			return "Brackets are not set correctly! Try again \n Here are your brackets wihout text:"  + bracketsWithoutChar + "\n" ;
+			return "Brackets are not set correctly! Try again" ;
 		}
 	}
 
-	private boolean checkBrackets(String command) {
-		bracketsWithoutChar = nextChar(command);
+	boolean checkBrackets(String command) {
+		String bracketsWithoutChar = nextChar(command);
 		for (int i = 0; i < bracketsWithoutChar.length(); i++) {
 			char currentChar = bracketsWithoutChar.charAt(i);
 			if (currentChar == '{' || currentChar == '(' || currentChar == '[') {
@@ -41,7 +41,7 @@ public class BracketServer implements CommandExecutor {
 	}
 
 	private String nextChar(String command) {
-
+		String bracketsWithoutChar = "";
 		for (int i = 0; i < command.length(); i++) {
 			char currentChar = command.charAt(i);
 			if (currentChar == '{' || currentChar == '}' || currentChar == '[' || currentChar == ']'

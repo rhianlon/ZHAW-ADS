@@ -5,7 +5,7 @@ import org.junit.Before;
 import static org.junit.Assert.*;
 public class BracketServerTest {
 	
-/*	BracketServer bs;
+BracketServer bs;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -25,5 +25,5 @@ public class BracketServerTest {
 		test("[({3 +3)* 35} +3]* {3 +2}",false);
 	}
 
-	*/
+	
 }
