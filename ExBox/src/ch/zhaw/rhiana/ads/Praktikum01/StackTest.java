@@ -15,11 +15,11 @@ import static org.junit.Assert.*;
 
 public class StackTest {
 	
-	ListStack stack;
+	StackLinkedList stack;
 	
 	@Before
 	public void setUp() throws Exception {
-		stack = new ListStack();
+		stack = new StackLinkedList();
 	}
     
 	@Test
