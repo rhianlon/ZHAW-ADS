@@ -14,7 +14,7 @@ public class KgvServer implements CommandExecutor {
 			int a = scanner.nextInt();
 			int b = scanner.nextInt();
 			scanner.close();
-			return Integer.toString(kgv(a, b)) + "\n";
+			return "The KgV of " +a+ " & " +b+ " is: " + Integer.toString(kgv(a, b)) + "\n";
 		} catch (KgvNegativeNumberException e) {
 			return e.getMessage() + "\n";
 		}
