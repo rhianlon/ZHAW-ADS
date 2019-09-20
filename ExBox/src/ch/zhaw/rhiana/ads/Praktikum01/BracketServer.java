@@ -9,9 +9,9 @@ public class BracketServer implements CommandExecutor {
 
 	public String execute(String command) {
 		if (checkBrackets(command) == true) {
-			return "Brackets are set correctly \n" + bracketsWithoutChar + "\n";
+			return "Brackets are set correctly \n Here are your brackets wihout text:" + bracketsWithoutChar + "\n";
 		} else {
-			return "Brackets are not set correctly! Try again \n"  + bracketsWithoutChar + "\n" ;
+			return "Brackets are not set correctly! Try again \n Here are your brackets wihout text:"  + bracketsWithoutChar + "\n" ;
 		}
 	}
 
