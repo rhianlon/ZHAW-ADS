@@ -7,18 +7,35 @@ import java.util.List;
 
 public class XMLServer implements CommandExecutor {
 
+	private StackLinkedList xmlStack = new StackLinkedList();
+
 	public String execute(String xmlFile) {
 		return getNextToken(xmlFile) + "\n";
 
 	}
 
 	private boolean checkWellformed(String xmlFile) {
-		String tagsWithoutChars = getNextToken(xmlFile);
-		
-		
 
 		return false;
 
+	}
+
+	private List getTokenAsStringInList(String xmlFile) {
+		String tagsWithoutChars = getNextToken(xmlFile);
+		String oneTokenString = "";
+		List<String> tokenList = new ArrayList<>();
+
+		for (int i = 0; i < tagsWithoutChars.length(); i++) {
+			char currentChar = tagsWithoutChars.charAt(i);
+			if (currentChar != '>') {
+				oneTokenString += Character.toString(currentChar);
+			} else {
+				oneTokenString += Character.toString(currentChar);
+				tokenList.add(oneTokenString);
+				oneTokenString = "";
+			}
+		}
+		return tokenList;
 	}
 
 	private String getNextToken(String xmlFile) {
@@ -26,7 +43,7 @@ public class XMLServer implements CommandExecutor {
 
 		for (int i = 0; i < xmlFile.length(); i++) {
 			char currentChar = xmlFile.charAt(i);
-			char currentCharMakesSureNoQuestionmark = xmlFile.charAt(i+1);
+			char currentCharMakesSureNoQuestionmark = xmlFile.charAt(i + 1);
 			if (currentChar == '<' && currentCharMakesSureNoQuestionmark != '?') {
 				tagsWithoutChars += Character.toString(currentChar);
 
@@ -44,30 +61,6 @@ public class XMLServer implements CommandExecutor {
 		}
 		return tagsWithoutChars;
 
-	}
-	
-	private List<String> getTheSingleTagsAsSingleObjectsInAList(String xmlFile) {
-		List<String> listWithTags = new ArrayList<>();
-		return null;
-		
-	}
-	
-	private String getTokenAsString(String xmlFile) {
-		String tagsWithoutChars = getNextToken(xmlFile);
-		String oneTokenString = "";
-		
-		for(int i = 0; i < tagsWithoutChars.length(); i++) {
-			char currentChar = tagsWithoutChars.charAt(i);
-			if(currentChar != '>') {
-				oneTokenString += Character.toString(currentChar);
-				tagsWithoutChars = tagsWithoutChars.substring(0, tagsWithoutChars.length()-1);
-			} else {
-				oneTokenString += Character.toString(currentChar);
-				break;
-			}
-			
-		}
-		return oneTokenString;
 	}
 
 }
