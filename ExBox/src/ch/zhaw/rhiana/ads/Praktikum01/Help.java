@@ -1,24 +1,23 @@
 package ch.zhaw.rhiana.ads.Praktikum01;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Help {
 
 	public static void main(String[] args) {
-		String hallo = getNextToken("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n" + 
-				"<note>\r\n" + 
-				"<to>Tove</to>\r\n" + 
-				"<from>Jani</from> \r\n" + 
-				"<heading>Reminder</heading>\r\n" + 
-				"<body>Don't forget me this weekend!</body>\r\n" + 
-				"</note>");
+		List hallo = getTokenAsStringInList("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n" + "<note>\r\n"
+				+ "<to>Tove</to>\r\n" + "<from>Jani</from> \r\n" + "<heading>Reminder</heading>\r\n"
+				+ "<body>Don't forget me this weekend!</body>\r\n" + "</note>");
 		System.out.println(hallo);
 	}
-	
+
 	public static String getNextToken(String xmlFile) {
 		String tagsWithoutChars = "";
 
 		for (int i = 0; i < xmlFile.length(); i++) {
 			char currentChar = xmlFile.charAt(i);
-			char currentCharMakesSureNoQuestionmark = xmlFile.charAt(i+1);
+			char currentCharMakesSureNoQuestionmark = xmlFile.charAt(i + 1);
 			if (currentChar == '<' && currentCharMakesSureNoQuestionmark != '?') {
 				tagsWithoutChars += Character.toString(currentChar);
 
@@ -36,6 +35,24 @@ public class Help {
 		}
 		return tagsWithoutChars;
 
+	}
+
+	private static List getTokenAsStringInList(String xmlFile) {
+		String tagsWithoutChars = getNextToken(xmlFile);
+		String oneTokenString = "";
+		List<String> tokenList = new ArrayList<>();
+
+		for (int i = 0; i < tagsWithoutChars.length(); i++) {
+			char currentChar = tagsWithoutChars.charAt(i);
+			if (currentChar != '>') {
+				oneTokenString += Character.toString(currentChar);
+			} else {
+				oneTokenString += Character.toString(currentChar);
+				tokenList.add(oneTokenString);
+				oneTokenString = "";
+			}
+		}
+		return tokenList;
 	}
 
 }

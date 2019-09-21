@@ -2,6 +2,9 @@ package ch.zhaw.rhiana.ads.Praktikum01;
 
 import ch.zhaw.rhiana.ads.CommandExecutor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class XMLServer implements CommandExecutor {
 
 	public String execute(String xmlFile) {
@@ -43,14 +46,28 @@ public class XMLServer implements CommandExecutor {
 
 	}
 	
-	private String comparisonOfTags(String xmlFile) {
+	private List<String> getTheSingleTagsAsSingleObjectsInAList(String xmlFile) {
+		List<String> listWithTags = new ArrayList<>();
+		return null;
+		
+	}
+	
+	private String getTokenAsString(String xmlFile) {
 		String tagsWithoutChars = getNextToken(xmlFile);
+		String oneTokenString = "";
 		
 		for(int i = 0; i < tagsWithoutChars.length(); i++) {
 			char currentChar = tagsWithoutChars.charAt(i);
+			if(currentChar != '>') {
+				oneTokenString += Character.toString(currentChar);
+				tagsWithoutChars = tagsWithoutChars.substring(0, tagsWithoutChars.length()-1);
+			} else {
+				oneTokenString += Character.toString(currentChar);
+				break;
+			}
+			
 		}
-		return xmlFile;
-		
+		return oneTokenString;
 	}
 
 }
