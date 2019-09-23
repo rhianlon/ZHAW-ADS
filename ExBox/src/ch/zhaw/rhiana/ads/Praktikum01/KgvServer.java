@@ -5,6 +5,9 @@ import java.util.Scanner;
 
 import ch.zhaw.rhiana.ads.CommandExecutor;
 
+/**
+ * @author Rhiana Weber
+ */
 public class KgvServer implements CommandExecutor {
 
 	@Override

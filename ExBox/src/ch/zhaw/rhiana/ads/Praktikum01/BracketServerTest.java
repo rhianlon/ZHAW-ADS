@@ -5,6 +5,9 @@ import org.junit.Before;
 import static org.junit.Assert.*;
 
 
+/**
+ * @author Rhiana Weber
+ */
 public class BracketServerTest {
 
 	BracketServer bs;

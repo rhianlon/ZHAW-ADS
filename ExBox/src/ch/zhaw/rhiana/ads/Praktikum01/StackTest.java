@@ -1,18 +1,12 @@
-/**
- * @(#)StackTest.java
- *
- *
- * @author 
- * @version 1.00 2017/8/30
- */
-
 package ch.zhaw.rhiana.ads.Praktikum01;
-
 
 import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.*;
 
+/**
+ * @author Rhiana Weber
+ */
 public class StackTest {
 	
 	StackLinkedList stack;

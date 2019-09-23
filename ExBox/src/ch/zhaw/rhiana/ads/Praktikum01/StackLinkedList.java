@@ -2,6 +2,9 @@ package ch.zhaw.rhiana.ads.Praktikum01;
 
 import java.util.LinkedList;
 
+/**
+ * @author Rhiana Weber
+ */
 public class StackLinkedList implements Stack {
 	
 	private LinkedList<Object> list;
@@ -39,7 +42,7 @@ public class StackLinkedList implements Stack {
 
 	@Override
 	public void removeAll() {
-		list = new LinkedList();
+		list = new LinkedList<Object>();
 
 	}
 
@@ -47,5 +50,4 @@ public class StackLinkedList implements Stack {
 	public boolean isFull() {
 		return false;
 	}
-
 }

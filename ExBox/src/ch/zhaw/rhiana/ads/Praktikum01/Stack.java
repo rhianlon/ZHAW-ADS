@@ -1,5 +1,8 @@
 package ch.zhaw.rhiana.ads.Praktikum01;
 
+/**
+ * @author Rhiana Weber
+ */
 public interface Stack {
 	
 	public void push (Object x) throws StackOverflowError;

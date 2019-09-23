@@ -5,6 +5,9 @@ import ch.zhaw.rhiana.ads.CommandExecutor;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Rhiana Weber
+ */
 public class XMLServer implements CommandExecutor {
 
 	private StackLinkedList xmlStack = new StackLinkedList();
@@ -15,9 +18,15 @@ public class XMLServer implements CommandExecutor {
 	}
 
 	private boolean checkWellformed(String xmlFile) {
-
+		List<String> tokenListToBeChecked = getTokenAsStringInList(xmlFile);
+		
+		for (int i = 0; i < tokenListToBeChecked.size(); i++) {
+			String currentString = tokenListToBeChecked.get(i);
+			if(currentString.contains("</")) {
+				
+			}
+		}
 		return false;
-
 	}
 
 	private List getTokenAsStringInList(String xmlFile) {
@@ -60,7 +69,7 @@ public class XMLServer implements CommandExecutor {
 			}
 		}
 		return tagsWithoutChars;
-
 	}
-
+	
+	
 }

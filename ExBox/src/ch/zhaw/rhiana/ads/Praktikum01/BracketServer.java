@@ -2,6 +2,9 @@ package ch.zhaw.rhiana.ads.Praktikum01;
 
 import ch.zhaw.rhiana.ads.CommandExecutor;
 
+/**
+ * @author Rhiana Weber
+ */
 public class BracketServer implements CommandExecutor {
 
 	private StackLinkedList bracketListStack = new StackLinkedList();
