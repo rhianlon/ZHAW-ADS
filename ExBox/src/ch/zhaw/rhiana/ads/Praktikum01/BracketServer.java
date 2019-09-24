@@ -17,6 +17,13 @@ public class BracketServer implements CommandExecutor {
 			return "Brackets are not set correctly! Try again" ;
 		}
 	}
+	
+	/**
+	 * Überprüft ob die Klammer alle richtig geschlossen werden
+	 * 
+	 * @param command übergebene String der auf die Klammersetzung überprüft werden soll
+	 * @return ob Klammern richtig gesetzt
+	 */
 
 	boolean checkBrackets(String command) {
 		String bracketsWithoutChar = nextChar(command);
@@ -42,6 +49,12 @@ public class BracketServer implements CommandExecutor {
 		}
 		return true;
 	}
+	
+	/**
+	 * Liefert nur die Klammern des übergeben String , ohne Character
+	 * @param command übergebene String der auf die Klammersetzung überprüft werden soll
+	 * @return String ohne Character
+	 */
 
 	private String nextChar(String command) {
 		String bracketsWithoutChar = "";
