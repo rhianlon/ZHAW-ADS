@@ -1,4 +1,4 @@
-package ch.zhaw.rhiana.ads.Praktikum01;
+package ch.zhaw.rhiana.ads.Praktikum02;
 
 import ch.zhaw.rhiana.ads.CommandExecutor;
 
