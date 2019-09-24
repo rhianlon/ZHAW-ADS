@@ -24,17 +24,17 @@ public class BracketServer implements CommandExecutor {
 		String bracketsWithoutChar = nextChar(command);
 		for (int i = 0; i < bracketsWithoutChar.length(); i++) {
 			char currentChar = bracketsWithoutChar.charAt(i);
-			if (currentChar == '{' || currentChar == '(' || currentChar == '[') {
+			if (currentChar == '{' || currentChar == '(' || currentChar == '[' || currentChar == '<') {
 				bracketListStack.push(currentChar);
 			}
-			if (currentChar == '}' || currentChar == ')' || currentChar == ']') {
+			if (currentChar == '}' || currentChar == ')' || currentChar == ']' || currentChar == '>') {
 				if (bracketListStack.isEmpty()) {
 					return false;
 				}
 
 				char lastInStack = (char) bracketListStack.peek();
 				if (currentChar == '}' && lastInStack == '{' || currentChar == ')' && lastInStack == '('
-						|| currentChar == ']' && lastInStack == '[') {
+						|| currentChar == ']' && lastInStack == '[' || currentChar == '>' && lastInStack == '<')  {
 					bracketListStack.pop();
 				} else {
 					return false;
@@ -42,8 +42,7 @@ public class BracketServer implements CommandExecutor {
 			}
 
 		}
-
-		return true;
+		return bracketListStack.isEmpty();
 	}
 
 	private String nextChar(String command) {
@@ -51,7 +50,7 @@ public class BracketServer implements CommandExecutor {
 		for (int i = 0; i < command.length(); i++) {
 			char currentChar = command.charAt(i);
 			if (currentChar == '{' || currentChar == '}' || currentChar == '[' || currentChar == ']'
-					|| currentChar == '(' || currentChar == ')') {
+					|| currentChar == '(' || currentChar == ')' || currentChar == '<' || currentChar == '>') {
 				bracketsWithoutChar += Character.toString(currentChar);
 			}
 
