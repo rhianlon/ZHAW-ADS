@@ -17,7 +17,7 @@ public class XMLServer implements CommandExecutor {
 
 	}
 
-	private boolean checkWellformed(String xmlFile) {
+	public boolean checkWellformed(String xmlFile) {
 		List<String> tokenListToBeChecked = getTokenAsStringInList(xmlFile);
 		StackLinkedList xmlStack = new StackLinkedList();
 		
@@ -45,7 +45,7 @@ public class XMLServer implements CommandExecutor {
 		return true;
 	}
 
-	private List getTokenAsStringInList(String xmlFile) {
+	private List<String> getTokenAsStringInList(String xmlFile) {
 		String tagsWithoutChars = getNextToken(xmlFile);
 		String oneTokenString = "";
 		List<String> tokenList = new ArrayList<>();
