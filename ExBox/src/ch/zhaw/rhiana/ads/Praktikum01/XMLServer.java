@@ -10,8 +10,6 @@ import java.util.List;
  */
 public class XMLServer implements CommandExecutor {
 
-	
-
 	public String execute(String xmlFile) {
 		return checkWellformed(xmlFile) + "\n";
 
@@ -20,25 +18,24 @@ public class XMLServer implements CommandExecutor {
 	public boolean checkWellformed(String xmlFile) {
 		List<String> tokenListToBeChecked = getTokenAsStringInList(xmlFile);
 		StackLinkedList xmlStack = new StackLinkedList();
-		
-		
+
 		for (int i = 0; i < tokenListToBeChecked.size(); i++) {
 			String currentString = tokenListToBeChecked.get(i);
-			if(currentString.contains("</")) {
-				if(xmlStack.isEmpty()) {
+			if (currentString.contains("</")) {
+				if (xmlStack.isEmpty()) {
 					return false;
 				}
-				
+
 				String lastInStack = (String) xmlStack.peek();
 				String modifiedClosingTag = currentString.substring(2);
 				String modiefiedOpeningTag = lastInStack.substring(1);
-				if(modifiedClosingTag.equals(modiefiedOpeningTag)){
+				if (modifiedClosingTag.equals(modiefiedOpeningTag)) {
 					xmlStack.pop();
-					
+
 				} else {
 					return false;
 				}
-			} else if(currentString.startsWith("<")) {
+			} else if (currentString.startsWith("<")) {
 				xmlStack.push(currentString);
 			}
 		}
@@ -70,9 +67,9 @@ public class XMLServer implements CommandExecutor {
 			char currentChar = xmlFile.charAt(i);
 			if (currentChar == '<') {
 				char currentCharMakesSureNoQuestionmark = xmlFile.charAt(i + 1);
-				if ( currentCharMakesSureNoQuestionmark != '?') {
+				if (currentCharMakesSureNoQuestionmark != '?') {
 					tagsWithoutChars += Character.toString(currentChar);
-					
+
 					for (int i1 = i + 1; i1 < xmlFile.length(); i1++) {
 						char currentChar1 = xmlFile.charAt(i1);
 						if (currentChar1 != '>') {
@@ -88,6 +85,5 @@ public class XMLServer implements CommandExecutor {
 		}
 		return tagsWithoutChars;
 	}
-	
-	
+
 }

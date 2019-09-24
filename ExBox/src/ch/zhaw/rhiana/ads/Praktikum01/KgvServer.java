@@ -9,6 +9,7 @@ import ch.zhaw.rhiana.ads.CommandExecutor;
  * @author Rhiana Weber
  */
 public class KgvServer implements CommandExecutor {
+	private static final String NEW_LINE = "\n";
 
 	@Override
 	public String execute(String command) throws Exception {
@@ -17,9 +18,9 @@ public class KgvServer implements CommandExecutor {
 			int a = scanner.nextInt();
 			int b = scanner.nextInt();
 			scanner.close();
-			return "The KgV of " +a+ " & " +b+ " is: " + Integer.toString(kgv(a, b)) + "\n";
+			return "The KgV of " + a + " & " + b + " is: " + Integer.toString(kgv(a, b)) + NEW_LINE;
 		} catch (KgvNegativeNumberException e) {
-			return e.getMessage() + "\n";
+			return e.getMessage() + NEW_LINE;
 		}
 	}
 
