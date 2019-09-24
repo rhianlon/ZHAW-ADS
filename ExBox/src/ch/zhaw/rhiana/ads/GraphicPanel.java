@@ -1,10 +1,11 @@
 package ch.zhaw.rhiana.ads;
 
 
-import javax.swing.*;
-import java.awt.event.*;
-import java.awt.*;
-import java.util.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.util.StringTokenizer;
+
+import javax.swing.JPanel;
 
 
 public class GraphicPanel extends JPanel {

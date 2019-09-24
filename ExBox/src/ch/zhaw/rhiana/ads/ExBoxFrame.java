@@ -33,7 +33,7 @@ public class ExBoxFrame extends JFrame implements ActionListener, ItemListener {
 	private JButton enter;
 	private JTextField arguments;
 	private JCheckBox reconnect;
-	private JComboBox history;
+	private JComboBox<Object> history;
 	private JTextArea output;
 	private JScrollPane scrollPane;	
 	private CommandExecutor command;
@@ -111,7 +111,7 @@ public class ExBoxFrame extends JFrame implements ActionListener, ItemListener {
 		panel.add(BorderLayout.EAST, enter);
 		reconnect = new JCheckBox("reconnect",true);
 		panel.add(BorderLayout.WEST,reconnect);
-		history = new JComboBox();
+		history = new JComboBox<>();
 		history.addItemListener(this);
 		panel.add(BorderLayout.SOUTH, history);
 		add(BorderLayout.SOUTH, panel);		
@@ -231,7 +231,7 @@ public class ExBoxFrame extends JFrame implements ActionListener, ItemListener {
 				failed.add(failure.getDescription().getDisplayName());
 			}	
 		});
-		Class testClass = ServerFactory.loadClass(name);
+		Class<?> testClass = ServerFactory.loadClass(name);
 		Result result = runner.run(testClass);
 	    
 		for (String test : finished) {
@@ -272,6 +272,8 @@ public class ExBoxFrame extends JFrame implements ActionListener, ItemListener {
 			b.append(line);
 			b.append('\n');
 		}
+		
+		br.close();
 		interpret(b.toString());	
 	}
 
