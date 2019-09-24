@@ -24,6 +24,17 @@ public class KgvServer implements CommandExecutor {
 		}
 	}
 
+	/**
+	 * Liefert das kleinste gemeinsame Vielfache zwischen den beiden 
+	 * übergebenen Werten.
+	 * 
+	 * @param a Erster Wert.
+	 * @param b Zweiter Wert.
+	 * 
+	 * @return Kleinstes gemeinsames Vielfaches.
+	 * 
+	 * @throws KgvNegativeNumberException Wenn eine der übergebenen Werte kleiner als null ist.
+	 */
 	public int kgv(int a, int b) throws KgvNegativeNumberException {
 		if(a < 0 || b < 0 ) {
 			throw new KgvNegativeNumberException();
@@ -44,5 +55,4 @@ public class KgvServer implements CommandExecutor {
 			return a;
 		}
 	}
-
 }

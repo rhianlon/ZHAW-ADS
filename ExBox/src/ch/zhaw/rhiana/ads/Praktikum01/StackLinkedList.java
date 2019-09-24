@@ -6,17 +6,18 @@ import java.util.LinkedList;
  * @author Rhiana Weber
  */
 public class StackLinkedList implements Stack {
-	
+	private static final int TOP_OF_STACK = 0;
+
 	private LinkedList<Object> list;
-	
+
 	public StackLinkedList() {
-		removeAll();
+		// removeAll();
+		list = new LinkedList<Object>();
 	}
 
 	@Override
-	public void push(Object x)  {
-		list.add(0,x);
-
+	public void push(Object x) {
+		list.add(TOP_OF_STACK, x);
 	}
 
 	@Override
@@ -24,7 +25,7 @@ public class StackLinkedList implements Stack {
 		if (isEmpty()) {
 			return null;
 		}
-		return list.remove(0);
+		return list.remove(TOP_OF_STACK);
 	}
 
 	@Override
@@ -37,17 +38,19 @@ public class StackLinkedList implements Stack {
 		if (isEmpty()) {
 			return null;
 		}
-		return list.get(0);
+
+		return list.get(TOP_OF_STACK);
 	}
 
 	@Override
 	public void removeAll() {
-		list = new LinkedList<Object>();
-
+		// list = new LinkedList<Object>();
+		list.clear();
 	}
 
 	@Override
 	public boolean isFull() {
+		// Ist immer false wenn mit LinkedList gelöst.
 		return false;
 	}
 }
