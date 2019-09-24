@@ -15,6 +15,12 @@ public class XMLServer implements CommandExecutor {
 
 	}
 
+	/**
+	 * Checkt ob das xml File das übergeben wurde "well formed" ist.
+	 * 
+	 * @param xmlFile Das übergebene xmlFile das getestet werden soll
+	 * @return ob "well formed"
+	 */
 	public boolean checkWellformed(String xmlFile) {
 		List<String> tokenListToBeChecked = getTokenAsStringInList(xmlFile);
 		StackLinkedList xmlStack = new StackLinkedList();
@@ -42,6 +48,12 @@ public class XMLServer implements CommandExecutor {
 		return true;
 	}
 
+	/**
+	 * Liefert die Tokens in einer Liste
+	 * 
+	 * @param xmlFile Das übergebene xmlFile das getestet werden soll
+	 * @return Token in einer Liste
+	 */
 	private List<String> getTokenAsStringInList(String xmlFile) {
 		String tagsWithoutChars = getNextToken(xmlFile);
 		String oneTokenString = "";
@@ -60,6 +72,13 @@ public class XMLServer implements CommandExecutor {
 		return tokenList;
 	}
 
+	/**
+	 * Liefert nurnoch die Tags des xml Files werden zurückgegeben, der Text
+	 * zwischen den Tags wird ignoriert
+	 * 
+	 * @param xmlFile Das übergebene xmlFile das getestet werden soll
+	 * @return Tags des xml Files.
+	 */
 	private String getNextToken(String xmlFile) {
 		String tagsWithoutChars = "";
 
