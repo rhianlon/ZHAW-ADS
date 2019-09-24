@@ -13,7 +13,7 @@ public class XMLServer implements CommandExecutor {
 	
 
 	public String execute(String xmlFile) {
-		return getNextToken(xmlFile) + "\n";
+		return checkWellformed(xmlFile) + "\n";
 
 	}
 
@@ -24,10 +24,6 @@ public class XMLServer implements CommandExecutor {
 		
 		for (int i = 0; i < tokenListToBeChecked.size(); i++) {
 			String currentString = tokenListToBeChecked.get(i);
-			if(currentString.startsWith("<")) {
-				xmlStack.push(currentString);
-			}
-			
 			if(currentString.contains("</")) {
 				if(xmlStack.isEmpty()) {
 					return false;
@@ -42,6 +38,8 @@ public class XMLServer implements CommandExecutor {
 				} else {
 					return false;
 				}
+			} else if(currentString.startsWith("<")) {
+				xmlStack.push(currentString);
 			}
 		}
 		return true;
@@ -70,18 +68,20 @@ public class XMLServer implements CommandExecutor {
 
 		for (int i = 0; i < xmlFile.length(); i++) {
 			char currentChar = xmlFile.charAt(i);
-			char currentCharMakesSureNoQuestionmark = xmlFile.charAt(i + 1);
-			if (currentChar == '<' && currentCharMakesSureNoQuestionmark != '?') {
-				tagsWithoutChars += Character.toString(currentChar);
-
-				for (int i1 = i + 1; i1 < xmlFile.length(); i1++) {
-					char currentChar1 = xmlFile.charAt(i1);
-					if (currentChar1 != '>') {
-						tagsWithoutChars += Character.toString(currentChar1);
-					} else {
-						tagsWithoutChars += Character.toString(currentChar1);
-						i = i1;
-						break;
+			if (currentChar == '<') {
+				char currentCharMakesSureNoQuestionmark = xmlFile.charAt(i + 1);
+				if ( currentCharMakesSureNoQuestionmark != '?') {
+					tagsWithoutChars += Character.toString(currentChar);
+					
+					for (int i1 = i + 1; i1 < xmlFile.length(); i1++) {
+						char currentChar1 = xmlFile.charAt(i1);
+						if (currentChar1 != '>') {
+							tagsWithoutChars += Character.toString(currentChar1);
+						} else {
+							tagsWithoutChars += Character.toString(currentChar1);
+							i = i1;
+							break;
+						}
 					}
 				}
 			}

@@ -19,10 +19,6 @@ public class Help {
 		
 		for (int i = 0; i < tokenListToBeChecked.size(); i++) {
 			String currentString = tokenListToBeChecked.get(i);
-			if(currentString.startsWith("<")) {
-				xmlStack.push(currentString);
-			}
-			
 			if(currentString.contains("</")) {
 				if(xmlStack.isEmpty()) {
 					return false;
@@ -37,6 +33,8 @@ public class Help {
 				} else {
 					return false;
 				}
+			} else if(currentString.startsWith("<")) {
+				xmlStack.push(currentString);
 			}
 		}
 		return true;
