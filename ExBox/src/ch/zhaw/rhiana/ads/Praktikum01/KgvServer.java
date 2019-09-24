@@ -23,7 +23,7 @@ public class KgvServer implements CommandExecutor {
 			return e.getMessage() + NEW_LINE;
 		}
 	}
-
+	
 	/**
 	 * Liefert das kleinste gemeinsame Vielfache zwischen den beiden 
 	 * übergebenen Werten.

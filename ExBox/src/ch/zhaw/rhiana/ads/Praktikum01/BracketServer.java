@@ -16,11 +16,11 @@ public class BracketServer implements CommandExecutor {
 			return "Brackets are not set correctly! Try again";
 		}
 	}
-	
+
 	/**
-	 * Überprüft ob die Klammer alle richtig geschlossen werden
+	 * ÃœberprÃ¼ft ob die Klammer alle richtig geschlossen werden
 	 * 
-	 * @param command übergebene String der auf die Klammersetzung überprüft werden soll
+	 * @param command Ã¼bergebene String der auf die Klammersetzung Ã¼berprÃ¼ft werden soll
 	 * @return ob Klammern richtig gesetzt
 	 */
 
@@ -54,8 +54,8 @@ public class BracketServer implements CommandExecutor {
 	}
 	
 	/**
-	 * Liefert nur die Klammern des übergeben String , ohne Character
-	 * @param command übergebene String der auf die Klammersetzung überprüft werden soll
+	 * Liefert nur die Klammern des Ã¼bergeben String , ohne Character
+	 * @param command Ã¼bergebene String der auf die Klammersetzung Ã¼berprÃ¼ft werden soll
 	 * @return String ohne Character
 	 */
 

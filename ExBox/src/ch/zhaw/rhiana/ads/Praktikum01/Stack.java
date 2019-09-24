@@ -4,7 +4,7 @@ package ch.zhaw.rhiana.ads.Praktikum01;
  * @author Rhiana Weber
  */
 public interface Stack {
-
+	
 	/**
 	 * Fügt das übergebene Objekt dem Stack hinzu.
 	 * 

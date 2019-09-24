@@ -47,7 +47,7 @@ public class StackLinkedList implements Stack {
 		// list = new LinkedList<Object>();
 		list.clear();
 	}
-
+	
 	@Override
 	public boolean isFull() {
 		// Ist immer false wenn mit LinkedList gelöst.
