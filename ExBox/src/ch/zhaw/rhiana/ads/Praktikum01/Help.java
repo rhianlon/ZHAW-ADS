@@ -6,10 +6,40 @@ import java.util.List;
 public class Help {
 
 	public static void main(String[] args) {
-		List hallo = getTokenAsStringInList("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n" + "<note>\r\n"
+		boolean hallo = checkWellformed("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n" + "<note>\r\n"
 				+ "<to>Tove</to>\r\n" + "<from>Jani</from> \r\n" + "<heading>Reminder</heading>\r\n"
 				+ "<body>Don't forget me this weekend!</body>\r\n" + "</note>");
 		System.out.println(hallo);
+	}
+	
+	private static boolean checkWellformed(String xmlFile) {
+		List<String> tokenListToBeChecked = getTokenAsStringInList(xmlFile);
+		StackLinkedList xmlStack = new StackLinkedList();
+		
+		
+		for (int i = 0; i < tokenListToBeChecked.size(); i++) {
+			String currentString = tokenListToBeChecked.get(i);
+			if(currentString.startsWith("<")) {
+				xmlStack.push(currentString);
+			}
+			
+			if(currentString.contains("</")) {
+				if(xmlStack.isEmpty()) {
+					return false;
+				}
+				
+				String lastInStack = (String) xmlStack.peek();
+				String modifiedClosingTag = currentString.substring(2);
+				String modiefiedOpeningTag = lastInStack.substring(1);
+				if(modifiedClosingTag.equals(modiefiedOpeningTag)){
+					xmlStack.pop();
+					
+				} else {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 
 	public static String getNextToken(String xmlFile) {
