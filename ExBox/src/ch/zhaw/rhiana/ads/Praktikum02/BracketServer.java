@@ -20,21 +20,24 @@ public class BracketServer implements CommandExecutor {
 	boolean checkBrackets(String command) {
 		// Zurücksetzen des Bracket-Server.
 		bracketListStack.removeAll();
+		
+		command = command.replace("<*", "%");
+		command = command.replace("*>", "&");
 
 		String bracketsWithoutChar = nextChar(command);
 		for (int i = 0; i < bracketsWithoutChar.length(); i++) {
 			char currentChar = bracketsWithoutChar.charAt(i);
-			if (currentChar == '{' || currentChar == '(' || currentChar == '[' || currentChar == '<') {
+			if (currentChar == '{' || currentChar == '(' || currentChar == '[' || currentChar == '<' || currentChar == '%') {
 				bracketListStack.push(currentChar);
 			}
-			if (currentChar == '}' || currentChar == ')' || currentChar == ']' || currentChar == '>') {
+			if (currentChar == '}' || currentChar == ')' || currentChar == ']' || currentChar == '>' || currentChar == '&') {
 				if (bracketListStack.isEmpty()) {
 					return false;
 				}
 
 				char lastInStack = (char) bracketListStack.peek();
 				if (currentChar == '}' && lastInStack == '{' || currentChar == ')' && lastInStack == '('
-						|| currentChar == ']' && lastInStack == '[' || currentChar == '>' && lastInStack == '<')  {
+						|| currentChar == ']' && lastInStack == '[' || currentChar == '>' && lastInStack == '<' || currentChar == '&' && lastInStack == '%')  {
 					bracketListStack.pop();
 				} else {
 					return false;
@@ -50,7 +53,7 @@ public class BracketServer implements CommandExecutor {
 		for (int i = 0; i < command.length(); i++) {
 			char currentChar = command.charAt(i);
 			if (currentChar == '{' || currentChar == '}' || currentChar == '[' || currentChar == ']'
-					|| currentChar == '(' || currentChar == ')' || currentChar == '<' || currentChar == '>') {
+					|| currentChar == '(' || currentChar == ')' || currentChar == '<' || currentChar == '>' || currentChar == '%' || currentChar == '&') {
 				bracketsWithoutChar += Character.toString(currentChar);
 			}
 
