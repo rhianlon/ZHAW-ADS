@@ -1,9 +1,11 @@
-package ch.zhaw.rhiana.ads.Praktikum02;
+package ch.zhaw.rhiana.ads.Praktikum02.rhianaapproach;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ch.zhaw.rhiana.ads.CommandExecutor;
+import ch.zhaw.rhiana.ads.Praktikum02.Stack;
+import ch.zhaw.rhiana.ads.Praktikum02.StackLinkedList;
 
 public class BracketServerRhianaApproach implements CommandExecutor {
 	

@@ -1,4 +1,4 @@
-package ch.zhaw.rhiana.ads.Praktikum02;
+package ch.zhaw.rhiana.ads.Praktikum02.rhianaapproach;
 
 public class Bracket {
 

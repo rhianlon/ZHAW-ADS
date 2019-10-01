@@ -120,8 +120,8 @@ public class DoubleLinkedList<T> extends AbstractList<T> {
 	@Override
 	public void clear() {
 		head.value = null;
-		head.next = null;
-		head.previous = null;
+		head.next = head;
+		head.previous = head;
 	}
 	
 	

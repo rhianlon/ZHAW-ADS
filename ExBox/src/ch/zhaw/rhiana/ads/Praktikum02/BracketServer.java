@@ -1,59 +1,15 @@
 package ch.zhaw.rhiana.ads.Praktikum02;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import ch.zhaw.rhiana.ads.CommandExecutor;
 
 /**
  * @author Rhiana Weber
  * <rhiana is the() best>
+ * 
+ * TODO: Konstanten
+ * TODO: List
  */
 public class BracketServer implements CommandExecutor {
-
-	private List<Bracket> bracketList = new ArrayList<>();
-	
-	public BracketServer() {
-		bracketList.add(new Bracket("<",">"));
-		bracketList.add(new Bracket("(",")"));
-		bracketList.add(new Bracket("{","}"));
-		bracketList.add(new Bracket("[","]"));
-		bracketList.add(new Bracket("<*","*>"));
-	}
-	
-	private String filterNonBrackets(String command) {
-		String onlyBrackets = "";
-		for(int i= 0; i < command.length(); i++) {
-			char currentChar = command.charAt(i);
-			if(bracketList.contains(currentChar)) {
-				
-			}
-		}
-		
-		return null;
-		
-	}
-	private String filterBracketList(String s) {
-		for (Bracket bracket : bracketList) {
-			
-		}
-		return null;
-		
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	private StackLinkedList bracketListStack = new StackLinkedList();
 
 	public String execute(String command) {
@@ -68,6 +24,7 @@ public class BracketServer implements CommandExecutor {
 		// Zurücksetzen des Bracket-Server.
 		bracketListStack.removeAll();
 		
+		// Ersetzen der problematischen Brackets mit einzelnen zeichen.
 		command = command.replace("<*", "%");
 		command = command.replace("*>", "&");
 
@@ -107,13 +64,5 @@ public class BracketServer implements CommandExecutor {
 		}
 
 		return bracketsWithoutChar;
-	}
-	private String nextCharAsSTring(String command) {
-		String bracketsWithoutChar = "";
-		for(int i = 0; i < command.length(); i++) {
-			
-		}
-		return command;
-		
 	}
 }
