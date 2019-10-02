@@ -9,8 +9,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import com.sun.xml.internal.fastinfoset.util.StringArray;
-
 import ch.zhaw.rhiana.ads.CommandExecutor;
 
 public class CompetitorServer implements CommandExecutor {

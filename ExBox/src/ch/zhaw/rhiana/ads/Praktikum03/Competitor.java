@@ -53,6 +53,7 @@ public class Competitor {
         sb.append(startNr);sb.append(" ");
         sb.append(name); sb.append(" ");
         sb.append(Integer.toString(jg)); sb.append(" ");
+        sb.append(country); sb.append(" ");
         sb.append(df.format(new Date(time)));
         return sb.toString();
     }
