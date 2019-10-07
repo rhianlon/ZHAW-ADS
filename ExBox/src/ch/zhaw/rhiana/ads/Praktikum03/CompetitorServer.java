@@ -20,7 +20,12 @@ public class CompetitorServer implements CommandExecutor {
 				.comparing(Competitor::getName)
 				.thenComparing(Competitor::getJg);
 	
-
+	//private static final String output = String.format();
+	
+	/**
+	 * @param rangliste einzulesene .csv Datei
+	 * @return Resultierende Rangliste entweder nach Zeit oder Name sortiert
+	 */
 	@Override
 	public String execute(String rangliste) throws Exception {
 		List<Competitor> competitorList = parseRangliste(rangliste);
@@ -32,7 +37,7 @@ public class CompetitorServer implements CommandExecutor {
 			competitor.setRank(i + 1);
 			
 		}
-		Collections.sort(competitorList, COMPARATOR_NAME);
+		Collections.sort(competitorList, COMPARATOR_NAME); // change to COMPARATOR_TIME for sorting for time 
 		String result = "";
 		for (int i = 0; i<competitorList.size();i++) {
 			Competitor competitor = competitorList.get(i);
@@ -41,7 +46,14 @@ public class CompetitorServer implements CommandExecutor {
 		}
 		return "RANG:STARTNr:NAME:JAHRG:ORT:ZEIT \n" + result + "\n";
 	}
-	
+	/**
+	 * 
+	 * @param rangliste einzulesene .csv Datei
+	 * @return List of competitors added
+	 * @throws IOException
+	 * @throws NumberFormatException
+	 * @throws ParseException
+	 */
 	public List<Competitor> parseRangliste(String rangliste) throws IOException, NumberFormatException, ParseException{
 		List<Competitor> competitorList = new ArrayList<>();
 		BufferedReader br = new BufferedReader(new StringReader(rangliste));
@@ -49,11 +61,11 @@ public class CompetitorServer implements CommandExecutor {
 		while ((line = br.readLine()) != null) {
 			String[] oneCompetitor = line.split(";");
 			Competitor comp = new Competitor(
-				Integer.valueOf(oneCompetitor[0]), 
-				oneCompetitor[1], 
-				Integer.valueOf(oneCompetitor[2]), 
-				oneCompetitor[3], 
-				oneCompetitor[4]
+				Integer.valueOf(oneCompetitor[0]), //StartNr
+				oneCompetitor[1], //Name
+				Integer.valueOf(oneCompetitor[2]), //Jahrgang
+				oneCompetitor[3], // Country
+				oneCompetitor[4] //time
 						
 			);
 					
