@@ -20,7 +20,6 @@ public class CompetitorServer implements CommandExecutor {
 				.comparing(Competitor::getName)
 				.thenComparing(Competitor::getJg);
 	
-	//private static final String output = String.format();
 	
 	/**
 	 * @param rangliste einzulesene .csv Datei

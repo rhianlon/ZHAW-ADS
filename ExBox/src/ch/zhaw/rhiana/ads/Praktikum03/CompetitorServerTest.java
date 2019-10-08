@@ -14,7 +14,12 @@ public class CompetitorServerTest {
 	public void setUp() throws Exception {
 		cs = new CompetitorServer();
 	}
-	
+	/**
+	 * 
+	 * @param input one Competitor
+	 * @param expected output of one Competitor on console/server
+	 * @throws Exception
+	 */
 	private void test(String input, String expected) throws Exception {
 		String output = cs.execute(input).trim();
 		String[] lines = output.split("\n");
