@@ -1,4 +1,4 @@
-package Praktikum_04_Code;
+package ch.zhaw.rhiana.ads.Praktikum04;
 
 public class Turtle {
 

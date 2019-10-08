@@ -1,4 +1,6 @@
-package Praktikum_04_Code;
+package ch.zhaw.rhiana.ads.Praktikum04;
+
+import ch.zhaw.rhiana.ads.CommandExecutor;
 
 public class TestGraphicServer implements CommandExecutor {
 

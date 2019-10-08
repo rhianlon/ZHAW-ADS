@@ -16,13 +16,4 @@ public class SortedList<T extends Comparable<T>> extends DoubleLinkedList<T> {
 		Collections.sort(this);
 		return result;
 	}
-	
-	@Override
-	public boolean remove(Object o) {
-		boolean result = super.remove(o);
-
-		// Default-sort bei jeder Änderung aufrufen
-		Collections.sort(this);
-		return result;
-	}
 }
