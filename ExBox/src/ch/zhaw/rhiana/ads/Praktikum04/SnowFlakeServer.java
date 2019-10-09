@@ -15,27 +15,45 @@ public class SnowFlakeServer implements CommandExecutor {
 		}
 		int level = Integer.valueOf(myCommandString[0]);
 		double distance = Double.valueOf(myCommandString[1]);
-		renderSnowflake(level, distance);
 		
-		return null;
+		return renderSnowflake(level, distance);
+	}
+//	public static void main(String[] args) {
+//		System.out.println(renderSnowflake(1, 2));
+//		
+//	}
+	
+	public String renderSnowflake(int level, double distance) {
+		Turtle turtle = new Turtle(0.25,0.75);
+		renderSnowflake(level,distance,turtle);
+		turtle.turn(-120);
+		renderSnowflake(level,distance,turtle);
+		turtle.turn(-120);
+		renderSnowflake(level,distance,turtle);
+		return turtle.getTrace();
 	}
 	
-	private void renderSnowflake(int level, double distance) {
-		Turtle turtle = new Turtle();
+	private String renderSnowflake(int level, double distance,Turtle turtle) {
+		
 
 		if(level == 0) {
 			turtle.move(distance);
 		} else {
 			level--;
 			distance = distance / 3 ;
-			renderSnowflake(level, distance);
+			renderSnowflake(level, distance,turtle);
 			turtle.turn(60);
-			renderSnowflake(level, distance);
+			renderSnowflake(level, distance,turtle);
 			turtle.turn(-120);
-			renderSnowflake(level, distance);
+			renderSnowflake(level, distance,turtle);
 			turtle.turn(60);
-			renderSnowflake(level, distance);
+			renderSnowflake(level, distance,turtle);
+			
+
+			
+			
 		}
+		return turtle.getTrace();
 	}
 	
 
