@@ -13,9 +13,9 @@ import ch.zhaw.rhiana.ads.CommandExecutor;
 
 public class CompetitorServer implements CommandExecutor {
 	
-	private static final Comparator<Competitor> COMPARATOR_TIME = 
+	public static final Comparator<Competitor> COMPARATOR_TIME = 
 			Comparator.comparing(Competitor::getTime);
-	private static final Comparator<Competitor> COMPARATOR_NAME =
+	public static final Comparator<Competitor> COMPARATOR_NAME =
 			Comparator
 				.comparing(Competitor::getName)
 				.thenComparing(Competitor::getJg);
@@ -53,7 +53,7 @@ public class CompetitorServer implements CommandExecutor {
 	 * @throws NumberFormatException
 	 * @throws ParseException
 	 */
-	public List<Competitor> parseRangliste(String rangliste) throws IOException, NumberFormatException, ParseException{
+	public static List<Competitor> parseRangliste(String rangliste) throws IOException, NumberFormatException, ParseException{
 		List<Competitor> competitorList = new ArrayList<>();
 		BufferedReader br = new BufferedReader(new StringReader(rangliste));
 		String line = null;

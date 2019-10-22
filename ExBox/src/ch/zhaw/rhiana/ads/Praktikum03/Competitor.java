@@ -3,7 +3,7 @@ package ch.zhaw.rhiana.ads.Praktikum03;
 import java.util.*;
 import java.text.*;
 
-public class Competitor {
+public class Competitor implements Comparable<Competitor> {
     private String name;
     private String country;
     private long time;
@@ -100,6 +100,12 @@ public class Competitor {
 		if (time != other.time)
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(Competitor o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 

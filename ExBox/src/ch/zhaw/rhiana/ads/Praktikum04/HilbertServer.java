@@ -86,7 +86,7 @@ public class HilbertServer implements CommandExecutor {
 	 * 
 	 * @return The coordinates of the curve.
 	 */
-	public String renderHilbert(int level, double distance, double angle, Turtle turtle) {
+	private String renderHilbert(int level, double distance, double angle, Turtle turtle) {
 		if (level > 0) {
 			int newLevel = level - 1;
 			turtle.turn(-angle);
