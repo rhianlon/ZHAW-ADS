@@ -18,9 +18,9 @@ public class TreeTraversal<T extends Comparable<T>> implements Traversal<T> {
 
 	private void inorder(TreeNode<T> node, Visitor<T> vis) {
 		if (node != null) {
-			postorder(node.left, vis);
+			inorder(node.left, vis);
 			vis.visit(node.element);
-			postorder(node.right, vis);
+			inorder(node.right, vis);
 		}
 	}
 
@@ -32,8 +32,8 @@ public class TreeTraversal<T extends Comparable<T>> implements Traversal<T> {
 	private void preorder(TreeNode<T> node, Visitor<T> vis) {
 		if (node != null) {
 			vis.visit(node.element);
-			postorder(node.left, vis);
-			postorder(node.right, vis);
+			preorder(node.left, vis);
+			preorder(node.right, vis);
 		}
 	}
 
