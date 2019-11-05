@@ -1,6 +1,6 @@
 package ch.zhaw.rhiana.ads.Praktikum07;
 
-public class Edge<N extends Node<?>> {
+public class Edge<N extends Node> {
     protected N dest;  // Zielknoten der Kante
     protected double weight;  // Kantengewicht
 

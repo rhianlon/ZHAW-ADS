@@ -1,8 +1,8 @@
 package ch.zhaw.rhiana.ads.Praktikum07;
 
-class DijkstraNode<E> extends Node<E> implements Comparable<DijkstraNode>  {
+class DijkstraNode extends Node<DijkstraNode> implements Comparable<DijkstraNode>  {
     boolean mark;
-    DijkstraNode<E> prev;
+    DijkstraNode prev;
     double dist;
 
     public double getDist (){
@@ -21,11 +21,11 @@ class DijkstraNode<E> extends Node<E> implements Comparable<DijkstraNode>  {
         return mark;
     }
 
-    public void setPrev(DijkstraNode<E> p) {
+    public void setPrev(DijkstraNode p) {
         prev = p;
     }
 
-    public DijkstraNode<E> getPrev() {
+    public DijkstraNode getPrev() {
         return prev;
     }
 

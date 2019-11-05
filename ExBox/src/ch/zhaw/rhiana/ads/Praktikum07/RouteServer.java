@@ -21,8 +21,8 @@ public class RouteServer implements CommandExecutor {
 		return null;
 	}
 
-	private Graph<DijkstraNode<String>, Edge> parse(String content) throws IOException {
-		Graph<DijkstraNode<String>, Edge> graph = new AdjListGraph<>(DijkstraNode.class, Edge.class);
+	private Graph<DijkstraNode, Edge> parse(String content) throws IOException {
+		Graph<DijkstraNode, Edge> graph = new AdjListGraph<>(DijkstraNode.class, Edge.class);
 
 		BufferedReader br = new BufferedReader(new StringReader(content));
 		String line = null;
@@ -38,10 +38,10 @@ public class RouteServer implements CommandExecutor {
 		return graph;
 	}
 
-	public void findShortestDistance(AdjListGraph<DijkstraNode<Edge>, Edge> adj, String start, String dest) {
-		Queue<DijkstraNode<Edge>> pq = new PriorityQueue<>();
-		 DijkstraNode<Edge> current = adj.findNode(start);
-		 DijkstraNode<Edge> destNode = adj.findNode(dest);
+	public void findShortestDistance(AdjListGraph<DijkstraNode, Edge<DijkstraNode>> adj, String start, String dest) {
+		Queue<DijkstraNode> pq = new PriorityQueue<>();
+		 DijkstraNode current = adj.findNode(start);
+		 DijkstraNode destNode = adj.findNode(dest);
 		 current.dist = 0;
 		 pq.offer(current);
 		 
@@ -49,8 +49,8 @@ public class RouteServer implements CommandExecutor {
 			 current = pq.poll();
 			 current.mark = true;
 
-			 for(Edge edge :  current.edges) {
-				 DijkstraNode<Edge> n = edge.dest;
+			 for(Edge<DijkstraNode> edge :  current.edges) {
+				 DijkstraNode n = edge.dest;
 				 if(!n.getMark()) {
 					 double dist = edge.weight + current.dist;
 					 if((n.prev == null) || (dist < n.dist)) {

@@ -1,13 +1,14 @@
 package ch.zhaw.rhiana.ads.Praktikum07;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
 
-public class Node<E extends Edge<Node<E>>> {
+public class Node<N extends Node> {
     protected String name; // Name
-    protected List<E> edges; // Kanten
+    protected List<Edge<N>> edges; // Kanten
 
     public Node() {
-        edges = new LinkedList<E>();
+        edges = new LinkedList<>();
     }
 
     public Node(String name) {
@@ -23,11 +24,11 @@ public class Node<E extends Edge<Node<E>>> {
         this.name = name;
     }
 
-    public Iterable<E> getEdges() {
+    public Iterable<Edge<N>> getEdges() {
         return edges;
     }
 
-	public void addEdge(E edge) {
+	public void addEdge(Edge<N> edge) {
         edges.add(edge);
     }
 

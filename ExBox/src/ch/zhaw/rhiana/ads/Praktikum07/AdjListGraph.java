@@ -2,7 +2,7 @@ package ch.zhaw.rhiana.ads.Praktikum07;
 
 import java.util.*;
 
-public class AdjListGraph<N extends Node, E extends Edge> implements Graph<N, E> {
+public class AdjListGraph<N extends Node, E extends Edge<N>> implements Graph<N, E> {
 	private final List<N> nodes = new LinkedList<N>();
 	private final Class nodeClazz;
 	private final Class edgeClazz;
