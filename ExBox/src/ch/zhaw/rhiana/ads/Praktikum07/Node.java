@@ -32,4 +32,8 @@ public class Node<N extends Node> {
         edges.add(edge);
     }
 
+	@Override
+	public String toString() {
+		return getName();
+	}
 }

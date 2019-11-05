@@ -5,7 +5,7 @@ import java.util.*;
 public interface Graph<N extends Node, E extends Edge> {
 
     // füge Knoten hinzu, tue nichts, falls Knoten schon existiert
-    N addNode (String name) throws Throwable;
+    N addNode(String name) throws Throwable;
 
     // finde den Knoten anhand seines Namens
     N findNode(String name);
