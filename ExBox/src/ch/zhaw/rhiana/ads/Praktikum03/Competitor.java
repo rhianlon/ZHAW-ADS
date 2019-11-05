@@ -104,8 +104,7 @@ public class Competitor implements Comparable<Competitor> {
 
 	@Override
 	public int compareTo(Competitor o) {
-		// TODO Auto-generated method stub
-		return 0;
+		return CompetitorServer.COMPARATOR_TIME.compare(this, o);
 	}
 	
 
