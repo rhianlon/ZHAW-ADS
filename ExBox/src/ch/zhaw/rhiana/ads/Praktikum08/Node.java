@@ -1,4 +1,4 @@
-package ch.zhaw.rhiana.ads.Praktikum07;
+package ch.zhaw.rhiana.ads.Praktikum08;
 
 import java.util.LinkedList;
 import java.util.List;

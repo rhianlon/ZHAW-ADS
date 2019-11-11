@@ -1,7 +1,5 @@
 package ch.zhaw.rhiana.ads.Praktikum07;
 
-import java.util.*;
-
 public interface Graph<N extends Node, E extends Edge> {
 
     // füge Knoten hinzu, tue nichts, falls Knoten schon existiert
@@ -15,6 +13,4 @@ public interface Graph<N extends Node, E extends Edge> {
 
     // füge gerichtete und gewichtete Kante hinzu
     void addEdge(String source, String dest, double weight);
-
-
 }
