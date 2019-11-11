@@ -11,18 +11,10 @@ import java.util.Stack;
 import ch.zhaw.rhiana.ads.CommandExecutor;
 
 public class LabrynthServer implements CommandExecutor {
-	
+
 	private ServerGraphics myCanvas = new ServerGraphics();
 	private String start = "0-6";
 	private String end = "3-0";
-
-//	private static final String command = "0-6 4-6\n" + "4-6 7-6\n" + "7-6 9-6\n" + "7-6 7-4\n" + "7-4 6-4\n"
-//			+ "7-4 9-4\n" + "9-4 9-1\n" + "7-4 7-1\n" + "7-1 5-1\n" + "4-6 4-4\n" + "4-4 4-3\n" + "4-4 1-4\n"
-//			+ "1-4 1-1\n" + "1-1 3-1\n" + "3-1 3-2\n" + "3-1 3-0";
-//
-//	public static void main(String[] args) throws Exception {
-//		new LabrynthServer().execute(command);
-//	}
 
 	@Override
 	public String execute(String command) throws Exception {
@@ -40,19 +32,27 @@ public class LabrynthServer implements CommandExecutor {
 
 		LabyrinthNode labyrinthStart = labyrinthGraph.findNode(start);
 		LabyrinthNode labyrinthTarget = labyrinthGraph.findNode(end);
+
 		
-		if(findpath(labyrinthStart, labyrinthTarget)) {
-		do {
-			drawPath(labyrinthTarget.getName(), labyrinthTarget.getPrev().getName(), true);
-			labyrinthTarget = labyrinthTarget.getPrev();
-		} while (labyrinthTarget.getPrev() != null);
+		if (findpath(labyrinthStart, labyrinthTarget)) {
+			do { //needs to be executed at least once otherwise PreviousNode would be null
+				drawPath(labyrinthTarget.getName(), labyrinthTarget.getPrev().getName(), true);
+				labyrinthTarget = labyrinthTarget.getPrev();
+			} while (labyrinthTarget.getPrev() != null); //draw path from the exit
 		}
-		
+
 		return myCanvas.getTrace();
 	}
-
+/**
+ * Returns a Graph with Nodes. A given String gets parsed for Nodes. The Nodes are saved with their corresponding edges and weights.
+ * @param coordinates given String to parse
+ * @return Graph with Nodes and their corresponding edges & weight
+ * @throws NumberFormatException 
+ * @throws IOException
+ */
 	public Graph<LabyrinthNode, Edge<LabyrinthNode>> parseCordinates(String coordinates)
 			throws NumberFormatException, IOException {
+		
 		Graph<LabyrinthNode, Edge<LabyrinthNode>> result = new AdjListGraph<>(LabyrinthNode.class, Edge.class);
 		BufferedReader br = new BufferedReader(new StringReader(coordinates));
 		String line = null;
@@ -87,6 +87,13 @@ public class LabrynthServer implements CommandExecutor {
 
 	}
 
+/**
+ * returns true when the path for the labyrinth was successfully found otherwise it will return false
+ * @param currentNode The current node.
+ * @param exitNode the exit of the Labyrinth
+ * @return true when the path was successfully found
+ * 
+ */
 	public boolean findpath(LabyrinthNode currentNode, LabyrinthNode exitNode) {
 
 		currentNode.setMark(true);
