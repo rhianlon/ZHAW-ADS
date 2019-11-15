@@ -264,8 +264,12 @@ public class ExBoxFrame extends JFrame implements ActionListener, ItemListener {
 	private void openFile()  throws Exception {
 		String name = openFileDialog(null, null);
 
+//		BufferedReader br = new BufferedReader(
+//				new InputStreamReader(new FileInputStream(name), "UTF-8"));
+		
 		BufferedReader br = new BufferedReader(
 				new InputStreamReader(new FileInputStream(name), "ISO-8859-1"));
+		
 		StringBuffer b = new StringBuffer();
 		String line;
 		while ((line = br.readLine()) != null) {

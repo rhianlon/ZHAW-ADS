@@ -3179,7 +3179,7 @@ public class ServerA2 implements CommandExecutor  {
 	
 	public static void main(String[] args) {
 		try {
-			new ServerA2().execute(rangliste);
+			System.out.println(new ServerA2().execute(rangliste));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

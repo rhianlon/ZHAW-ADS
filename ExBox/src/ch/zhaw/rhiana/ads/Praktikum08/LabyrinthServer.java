@@ -10,7 +10,12 @@ import java.util.Stack;
 
 import ch.zhaw.rhiana.ads.CommandExecutor;
 
-public class LabrynthServer implements CommandExecutor {
+/**
+ * Represents the labyrinth server.
+ * 
+ * @author Rhiana Weber
+ */
+public class LabyrinthServer implements CommandExecutor {
 
 	private ServerGraphics myCanvas = new ServerGraphics();
 	private String start = "0-6";
@@ -33,26 +38,29 @@ public class LabrynthServer implements CommandExecutor {
 		LabyrinthNode labyrinthStart = labyrinthGraph.findNode(start);
 		LabyrinthNode labyrinthTarget = labyrinthGraph.findNode(end);
 
-		
 		if (findpath(labyrinthStart, labyrinthTarget)) {
-			do { //needs to be executed at least once otherwise PreviousNode would be null
+			do { 
+				// needs to be executed at least once otherwise PreviousNode would be null
 				drawPath(labyrinthTarget.getName(), labyrinthTarget.getPrev().getName(), true);
 				labyrinthTarget = labyrinthTarget.getPrev();
-			} while (labyrinthTarget.getPrev() != null); //draw path from the exit
+			} while (labyrinthTarget.getPrev() != null); // draw path from the exit
 		}
 
 		return myCanvas.getTrace();
 	}
-/**
- * Returns a Graph with Nodes. A given String gets parsed for Nodes. The Nodes are saved with their corresponding edges and weights.
- * @param coordinates given String to parse
- * @return Graph with Nodes and their corresponding edges & weight
- * @throws NumberFormatException 
- * @throws IOException
- */
+
+	/**
+	 * Returns a Graph with Nodes. A given String gets parsed for Nodes. The Nodes
+	 * are saved with their corresponding edges and weights.
+	 * 
+	 * @param coordinates given String to parse
+	 * @return Graph with Nodes and their corresponding edges & weight
+	 * @throws NumberFormatException
+	 * @throws IOException
+	 */
 	public Graph<LabyrinthNode, Edge<LabyrinthNode>> parseCordinates(String coordinates)
 			throws NumberFormatException, IOException {
-		
+
 		Graph<LabyrinthNode, Edge<LabyrinthNode>> result = new AdjListGraph<>(LabyrinthNode.class, Edge.class);
 		BufferedReader br = new BufferedReader(new StringReader(coordinates));
 		String line = null;
@@ -87,13 +95,15 @@ public class LabrynthServer implements CommandExecutor {
 
 	}
 
-/**
- * returns true when the path for the labyrinth was successfully found otherwise it will return false
- * @param currentNode The current node.
- * @param exitNode the exit of the Labyrinth
- * @return true when the path was successfully found
- * 
- */
+	/**
+	 * Returns true when the path for the labyrinth was successfully found otherwise
+	 * it will return false.
+	 * 
+	 * @param currentNode The current node.
+	 * @param exitNode    the exit of the Labyrinth
+	 * @return true when the path was successfully found
+	 * 
+	 */
 	public boolean findpath(LabyrinthNode currentNode, LabyrinthNode exitNode) {
 
 		currentNode.setMark(true);
@@ -115,7 +125,9 @@ public class LabrynthServer implements CommandExecutor {
 
 	}
 
-	final double SCALE = 15;
+	/* internals */
+	
+	private final double SCALE = 15;
 
 	private void drawPath(String from, String to, boolean mouse) {
 		double offsetX = 0.0;
@@ -140,5 +152,4 @@ public class LabrynthServer implements CommandExecutor {
 			myCanvas.fillRect(x0 + offsetX, y0 + offsetY, w, y1 - y0 + w);
 		}
 	}
-
 }

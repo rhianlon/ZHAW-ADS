@@ -18,23 +18,24 @@ public class RouteServer implements CommandExecutor {
 	public static final int INDEX_TO = 1;
 	public static final int INDEX_DISTANCE = 2;
 	
-	public static void main(String[] args) throws Exception {
-		System.out.println(new RouteServer().execute(
-				"Winterthur Zürich 25\n" + 
-				"Zürich Bern 126\n" +
-				"Zürich Genf 277\n" + 
-				"Zürich Luzern 54\n" + 
-				"Zürich Chur 121\n" + 
-				"Zürich Berikon 16\n" + 
-				"Bern Genf 155\n" + 
-				"Genf Lugano 363\n" + 
-				"Lugano Luzern 206\n" + 
-				"Lugano Chur 152\n" + 
-				"Chur Luzern 146\n" + 
-				"Luzern Bern 97\n" + 
-				"Bern Berikon 102\n" + 
-				"Luzern Berikon 41\n"));
-	}
+//	 TEST
+//	public static void main(String[] args) throws Exception {
+//		System.out.println(new RouteServer().execute(
+//				"Winterthur Zürich 25\n" + 
+//				"Zürich Bern 126\n" +
+//				"Zürich Genf 277\n" + 
+//				"Zürich Luzern 54\n" + 
+//				"Zürich Chur 121\n" + 
+//				"Zürich Berikon 16\n" + 
+//				"Bern Genf 155\n" + 
+//				"Genf Lugano 363\n" + 
+//				"Lugano Luzern 206\n" + 
+//				"Lugano Chur 152\n" + 
+//				"Chur Luzern 146\n" + 
+//				"Luzern Bern 97\n" + 
+//				"Bern Berikon 102\n" + 
+//				"Luzern Berikon 41\n"));
+//	}
 
 	@Override
 	public String execute(String command) throws Exception {
@@ -45,7 +46,6 @@ public class RouteServer implements CommandExecutor {
 		
 		StringBuilder sb = new StringBuilder();
 		for (DijkstraNode node : nodes) {
-			//sb.append(" - ");
 			sb.append(node.name);
 			sb.append("\n");
 		}
